@@ -1,3 +1,4 @@
-emojicmd
-========
-A ZSH plugin for displaying a fancy message on your Terminal.app tab.
+ZSH Terminal.app
+================
+
+A ZSH plugin for integrating with the new El Capitan Terminal.app features.

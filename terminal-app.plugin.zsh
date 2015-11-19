@@ -13,8 +13,8 @@ add-zsh-hook -d preexec grml_control_xterm_title
 
 drak_window_title()
 {
-  print -Pn "\e]1;\a"
-  print -Pn "\e]2;${(%):-"%n@%m"}\a" # must be last
+  print -Pn "\e]1;\a" "\e]6;\a"
+  print -Pn "\e]2;${(%):-"%n@%m"}\a"
 }
 add-zsh-hook precmd drak_window_title
 

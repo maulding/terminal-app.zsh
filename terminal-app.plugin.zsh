@@ -2,36 +2,33 @@
 # ZSH + Terminal.app = ❤️
 # Ryan Maulding <ryan@drak.studio>
 #
+
 autoload -Uz add-zsh-hook
 
-drak_terminal_pwd()
+drak_cmd_window()
 {
-  local _url="file://${USER}@$(hostname)$(realpath -eL ${PWD})"
-  print -NPn "\e]7;${_url}\a"
-  return 0
+  print -NPn "\e]2;${(%):-"%n@%m"}\a"
 }
 
-
-drak_window_title()
+drak_exe_window()
 {
-  print -NPn "\e]1;\U1F5A5\a" "\e]2;${(%):-"%n@%m"}\a" "\e]6;\a"
-  return 0
+  print -NPn "\e]1;\U1F5A5\a" "\e]2;${(%):-"%n@%m"}\a"
 }
 
-drak_tab_title()
+drak_exe_tab()
 {
+  print -NPn "\e]0;\U2728\a" "\e]1;\U1F5A5\a"
   local _icon
   _icon=${${drak_tabicon[${${(z)3}[1]}]}:-${drak_tabicon[${_repl}]}}
-  print -NPn "\e]1;${_icon}\a"
-  return 0
+  (print -NPn "\e]1;${_icon}\a" && sleep 0.1) &!
 }
 
-drak_tab_title_waiting() {
-  print -NPn "\e]0;\U2728\a" "\e]1;\U2728\a"
-  return 0
+drak_cmd_tab()
+{
+  print -NPn "\e]0;\U2728\a" "\e]1;\U1F5A5\a"
 }
 
-drak_title_document()
+drak_exe_document()
 {
   local _path _url
   for f in ${(@z)${1}}; do
@@ -40,20 +37,32 @@ drak_title_document()
       _path=`realpath -eL ${_path}`
       _url="file://${USER}@$(hostname)${_path}"
       print -NPn "\e]6;${_url}\a"
-      print -NPn "\e]2;${(%):-"%n@%m"}\a"
       return 0
     fi
   done
 }
 
-add-zsh-hook precmd drak_window_title
+drak_cmd_document()
+{
+  print -NPn "\e]6;\a"
+}
 
-add-zsh-hook preexec drak_tab_title_waiting
-add-zsh-hook preexec drak_tab_title
-add-zsh-hook preexec drak_title_document
+drak_pwd_terminal()
+{
+  local _url="file://${USER}@$(hostname)$(realpath -eL ${PWD})"
+  print -NPn "\e]7;${_url}\a"
+}
 
-add-zsh-hook chpwd drak_terminal_pwd \
-  && drak_terminal_pwd
+add-zsh-hook precmd  drak_cmd_tab
+add-zsh-hook precmd  drak_cmd_window
+add-zsh-hook precmd  drak_cmd_document
+
+add-zsh-hook preexec drak_exe_tab
+add-zsh-hook preexec drak_exe_window
+add-zsh-hook preexec drak_exe_document
+
+add-zsh-hook chpwd   drak_pwd_terminal \
+                  && drak_pwd_terminal
 
 typeset -gA drak_tabicon
 drak_tabicon+=('brew'   $'\U1F37A'); # BEER MUG

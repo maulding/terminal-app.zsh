@@ -28,9 +28,10 @@ add-zsh-hook chpwd drak_terminal_pwd; drak_terminal_pwd
 drak_title_document()
 {
   local _path _url
-  for f in "${(@z)${3}}"; do
+  for f in ${(@z)${1}}; do
     _path="${f/"~"/${HOME}}"
     if [[ -e "${_path}" ]]; then
+      _path=`realpath ${_path}`
       _url="file://${USER}@$(hostname)${_path}"
       print -Pn "\e]6;${_url}\a"
       return 0
@@ -41,19 +42,11 @@ add-zsh-hook preexec drak_title_document
 
 drak_tab_title()
 {
-  local _args _path _psvar _repl _icon
-  if [[ "${${(z)1}[1]}" == "${${(Oaz)${(z)1}}[1]}" ]]; then
-    _args=("${(z)1}")
-  elif [[ -e "${(z)1}" ]]; then
-    _args=("${${(z)1}[1]}" "${${(Oaz)${(ps./.)1}}[1]}")
-  else
-    _args=("${${(z)1}[1]}" "${${(Oaz)${(z)1}}[1]}")
-  fi
-  _psvar=${psvar}
-  _repl=_${${(U)${${(@)${(z)3}[1]}[1]}}/?([:upper:])/_}
+  local _psvar _icon
   _icon=${${drak_tabicon[${${(z)3}[1]}]}:-${drak_tabicon[${_repl}]}}
-  psvar=(${_args}) print -Pn "\e]1;${_icon} %v%2(V.: %2v.)\a"
-  psvar=${_psvar}
+  _psvar=${psvar} \
+    && psvar=(${_args}) print -Pn "\e]1;${_icon}\a" \
+    && psvar=${_psvar}
 }
 add-zsh-hook preexec drak_tab_title
 
@@ -65,10 +58,10 @@ drak_tabicon+=('rails'  $'\U1F6E4'); # RAILWAY TRACK
 drak_tabicon+=('grunt'  $'\U1F43D'); # PIG NOSE
 drak_tabicon+=('gulp'   $'\U1F379'); # TROPICAL DRINK
 drak_tabicon+=('bower'  $'\U1F3F9'); # BOW AND ARROW
-drak_tabicon+=('git'    $'\U1F500'); # TWISTED RIGHTWARDS ARROWS
-drak_tabicon+=('hg'     $'\U1F500'); # TWISTED RIGHTWARDS ARROWS
-drak_tabicon+=('svn'    $'\U1F500'); # TWISTED RIGHTWARDS ARROWS
-drak_tabicon+=('cvs'    $'\U1F500'); # TWISTED RIGHTWARDS ARROWS
+drak_tabicon+=('git'    $'\U1F3F7'); # LABEL
+drak_tabicon+=('hg'     $'\U1F3F7'); # LABEL
+drak_tabicon+=('svn'    $'\U1F3F7'); # LABEL
+drak_tabicon+=('cvs'    $'\U1F3F7'); # LABEL
 drak_tabicon+=('psql'   $'\U1F418'); # ELEPHANT
 drak_tabicon+=('mysql'  $'\U1F42C'); # DOLPHIN
 drak_tabicon+=('budle'  $'\U1F4E6'); # PACKAGE

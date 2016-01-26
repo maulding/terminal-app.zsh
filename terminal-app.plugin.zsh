@@ -1,29 +1,35 @@
 ##
 # ZSH + Terminal.app = ❤️
-# Ryan Maulding <ryan@drak.io>
+# Ryan Maulding <ryan@drak.studio>
 #
-
 autoload -Uz add-zsh-hook
-
-# remove grml screen_title/xterm_title hooks from stack
-add-zsh-hook -d precmd  grml_reset_screen_title
-add-zsh-hook -d precmd  grml_vcs_to_screen_title
-add-zsh-hook -d preexec grml_cmd_to_screen_title
-add-zsh-hook -d preexec grml_control_xterm_title
-
-drak_window_title()
-{
-  print -Pn "\e]1;\U1F5A5\a" "\e]6;\a"
-  print -Pn "\e]2;${(%):-"%n@%m"}\a"
-}
-add-zsh-hook precmd drak_window_title
 
 drak_terminal_pwd()
 {
   local _url="file://${USER}@$(hostname)$(realpath -eL ${PWD})"
-  print -Pn "\e]7;${_url}\a"
+  print -NPn "\e]7;${_url}\a"
+  return 0
 }
-add-zsh-hook chpwd drak_terminal_pwd; drak_terminal_pwd
+
+
+drak_window_title()
+{
+  print -NPn "\e]1;\U1F5A5\a" "\e]2;${(%):-"%n@%m"}\a" "\e]6;\a"
+  return 0
+}
+
+drak_tab_title()
+{
+  local _icon
+  _icon=${${drak_tabicon[${${(z)3}[1]}]}:-${drak_tabicon[${_repl}]}}
+  print -NPn "\e]1;${_icon}\a"
+  return 0
+}
+
+drak_tab_title_waiting() {
+  print -NPn "\e]0;\U2728\a" "\e]1;\U2728\a"
+  return 0
+}
 
 drak_title_document()
 {
@@ -31,24 +37,23 @@ drak_title_document()
   for f in ${(@z)${1}}; do
     _path="${f/"~"/${HOME}}"
     if [[ -e "${_path}" ]]; then
-      _path=`realpath ${_path}`
+      _path=`realpath -eL ${_path}`
       _url="file://${USER}@$(hostname)${_path}"
-      print -Pn "\e]6;${_url}\a"
+      print -NPn "\e]6;${_url}\a"
+      print -NPn "\e]2;${(%):-"%n@%m"}\a"
       return 0
     fi
   done
 }
+
+add-zsh-hook precmd drak_window_title
+
+add-zsh-hook preexec drak_tab_title_waiting
+add-zsh-hook preexec drak_tab_title
 add-zsh-hook preexec drak_title_document
 
-drak_tab_title()
-{
-  local _psvar _icon
-  _icon=${${drak_tabicon[${${(z)3}[1]}]}:-${drak_tabicon[${_repl}]}}
-  _psvar=${psvar} \
-    && psvar=(${_args}) print -Pn "\e]1;${_icon}\a" \
-    && psvar=${_psvar}
-}
-add-zsh-hook preexec drak_tab_title
+add-zsh-hook chpwd drak_terminal_pwd \
+  && drak_terminal_pwd
 
 typeset -gA drak_tabicon
 drak_tabicon+=('brew'   $'\U1F37A'); # BEER MUG

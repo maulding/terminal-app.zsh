@@ -1,10 +1,13 @@
-# ZSH Terminal.app
+# ZSH Terminal.app Integration Plug-in
 
-A ZSH plugin for integrating with the new El Capitan Terminal.app features.
+A ZSH plug-in for integrating with the new El Capitan Terminal.app window title and tab escape codes. The plug-in injects Emoji into the window title and tabs based on the currently executing process.
+
+![Terminal.app Screenshot](/doc/screen-terminal-app-0.png)
 
 ## Installation
 
-Add the following to your `.zshrc`
+### Manual Install
+Add the following snippet to your `~/.zshrc`
 
 ```zsh
 ## Terminal.app specific title hooks
@@ -13,7 +16,7 @@ source ~/.zsh/zsh-terminal-app/terminal-app.plugin.zsh
 
 ## Currently Used Icons/Emoji
 
-### Shell Commands
+### Shell Command Emoji
 
 | Emoji | Command(s)          |
 |:-----:|:--------------------|
@@ -35,7 +38,10 @@ source ~/.zsh/zsh-terminal-app/terminal-app.plugin.zsh
 | 🗑     |  rm                 |
 | 🖥     |  ssh                |
 
-### Placeholders
+
+✨ [Suggest additional Emoji to add to the database!](https://github.com/the8/zsh-plugin-terminal-app/issues/new?labels=new+command+request&title=Add+shell+'<command>'+linked+to+emoji+'<emoji>') ✨
+  
+### Placeholder Emoji
 
 | Emoji | Command(s) | Emoji | Command(s) |
 |:-----:|:-----------|:-----:|:-----------|
@@ -54,12 +60,11 @@ source ~/.zsh/zsh-terminal-app/terminal-app.plugin.zsh
 | 🇲 |  _M | 🇿 |  _Z |
 | ⁉ |  __ |   |   |
 
-## Terminal.app Profile
+## Terminal.app and iTerm2 Color Profiles
 
-I put together a terminal profile that works nice on my system. It uses some
-throwback colors from the DOS days, which I enjoy over the contemporary schemes
-everyone is pimpin' these days.
+Take a look at my [Retro styled ANSi BBS color profiles](https://github.com/the8/iCE-terminal) for both [Terminal.app](https://github.com/the8/iCE-terminal/blob/master/iCE.terminal) and [iTerm2](https://github.com/the8/iCE-terminal/blob/master/iCE.itermcolors).
 
-![iCE Profile Screen #1](/doc/screen-ice-pro-0.png)
-![iCE Profile Screen #2](/doc/screen-ice-pro-1.png)
+![iCE.terminal Screenshot](/doc/screen-ice-pro-0.png)
+
+
 

@@ -15,25 +15,25 @@ source ~/.zsh/zsh-terminal-app/terminal-app.plugin.zsh
 
 ### Shell Commands
 
-| Emoji | Command(s) |
-|:-----:|:-----------|
-| 🔎 |  ack, grep |
-| 🏹 |  bower |
-| 🍺 |  brew |
-| 📦 |  budle, budler, bunzip, bzip, gunzip, gzip, tar, unzip, zip |
-| ☕ |  coffee, java, node |
-| 🏷 |  cvs, git, hg, svn |
-| 🐽 |  grunt |
-| 🍹 |  gulp |
-| 💉 |  jekyll |
-| 👓 |  less, more, tail |
-| 🛠 |  make |
-| 📚 |  man |
-| 🐬 |  mysql |
-| 🐘 |  psql |
-| 🛤 |  rails |
-| 🗑 |  rm |
-| 🖥 |  ssh |
+| Emoji | Command(s)          |
+|:-----:|:--------------------|
+| 🔎     |  ack, grep          |
+| 🏹     |  bower              |
+| 🍺     |  brew               |
+| 📦     |  budle, budler, bunzip, bzip, gunzip, gzip, tar, unzip, zip  |
+| ☕     |  coffee, java, node |
+| 🏷     |  cvs, git, hg, svn  |
+| 🐽     |  grunt              |
+| 🍹     |  gulp               |
+| 💉     |  jekyll             |
+| 👓     |  less, more, tail   |
+| 🛠     |  make               |
+| 📚     |  man                |
+| 🐬     |  mysql              |
+| 🐘     |  psql               |
+| 🛤     |  rails              |
+| 🗑     |  rm                 |
+| 🖥     |  ssh                |
 
 ### Placeholders
 
@@ -60,5 +60,6 @@ I put together a terminal profile that works nice on my system. It uses some
 throwback colors from the DOS days, which I enjoy over the contemporary schemes
 everyone is pimpin' these days.
 
-![iCE Profile](/doc/screen-ice-pro.png)
+![iCE Profile Screen #1](/doc/screen-ice-pro-0.png)
+![iCE Profile Screen #2](/doc/screen-ice-pro-1.png)
 

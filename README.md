@@ -7,24 +7,25 @@ A ZSH plug-in for integrating with the new El Capitan Terminal.app window title 
 ## Installation
 
 ### Manual Install
+
 Add the following snippet to your `~/.zshrc`
 
 ```zsh
-## Terminal.app specific title hooks
-source ~/.zsh/zsh-terminal-app/terminal-app.plugin.zsh
+# Terminal.app specific title hooks
+source ~/.zsh/terminal-app.zsh/terminal-app.plugin.zsh
 ```
 
 ## Currently Used Icons/Emoji
 
 ### Shell Command Emoji
 
-| Emoji | Command(s)          |
-|:-----:|:--------------------|
+| Emoji  | Command(s)          |
+|:------:|:--------------------|
 | 🔎     |  ack, grep          |
 | 🏹     |  bower              |
 | 🍺     |  brew               |
 | 📦     |  budle, budler, bunzip, bzip, gunzip, gzip, tar, unzip, zip  |
-| ☕     |  coffee, java, node |
+| ☕      |  coffee, java, node |
 | 🏷     |  cvs, git, hg, svn  |
 | 🐽     |  grunt              |
 | 🍹     |  gulp               |
@@ -38,8 +39,7 @@ source ~/.zsh/zsh-terminal-app/terminal-app.plugin.zsh
 | 🗑     |  rm                 |
 | 🖥     |  ssh                |
 
-
-✨ [Suggest additional Emoji to add to the database!](https://github.com/the8/zsh-plugin-terminal-app/issues/new?labels=new+command+request&title=Add+shell+'<command>'+linked+to+emoji+'<emoji>') ✨
+✨ [Suggest additional Emoji to add to the database!](https://github.com/the8/terminal-app.zsh/issues/new?labels=new+command+request&title=Add+shell+'<command>'+linked+to+emoji+'<emoji>') ✨
   
 ### Placeholder Emoji
 
@@ -58,11 +58,11 @@ source ~/.zsh/zsh-terminal-app/terminal-app.plugin.zsh
 | 🇰 |  _K | 🇽 |  _X |
 | 🇱 |  _L | 🇾 |  _Y |
 | 🇲 |  _M | 🇿 |  _Z |
-| ⁉ |  __ |   |   |
+| ⁉  | __  |    |     |
 
 ## Terminal.app and iTerm2 Color Profiles
 
-Take a look at my [Retro styled ANSi BBS color profiles](https://github.com/the8/iCE-terminal) for both [Terminal.app](https://github.com/the8/iCE-terminal/blob/master/iCE.terminal) and [iTerm2](https://github.com/the8/iCE-terminal/blob/master/iCE.itermcolors).
+Take a look at my [Retro styled ANSi BBS color profiles](https://github.com/the8/ice.terminal) for both [Terminal.app](https://github.com/the8/ice.terminal/blob/master/ice.terminal) and [iTerm2](https://github.com/the8/ice.terminal/blob/master/ice.itermcolors).
 
 ![iCE.terminal Screenshot](/doc/screen-ice-pro-0.png)
 

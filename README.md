@@ -73,5 +73,5 @@ I put together a terminal profile that works nice on my system. It uses some
 throwback colors from the DOS days, which I enjoy over the contemporary schemes
 everyone is pimpin' these days.
 
-![iCE Profile](/screen-ice-pro.png)
+![iCE Profile](/doc/screen-ice-pro.png)
 

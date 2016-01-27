@@ -2,7 +2,6 @@
 # ZSH + Terminal.app = ❤️
 # Ryan Maulding <ryan@drak.studio>
 #
-
 autoload -Uz add-zsh-hook
 
 drak_cmd_window()
